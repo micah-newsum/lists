@@ -1,6 +1,7 @@
 package com.newsum;
 
 import com.newsum.model.Employee;
+import com.newsum.model.EmployeeLinkedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class Application {
   public static void main(String[] args) {
     arrayListClient();
+    employeeLinkedListClient();
   }
 
   private static void arrayListClient(){
@@ -38,5 +40,26 @@ public class Application {
     // removing an element is O(n) because the operation may require every element in the backing array to be shifted down an index
     employees.remove(0);
     employees.forEach(System.out::println);
+  }
+
+  private static void employeeLinkedListClient(){
+    Employee micah = new Employee("Micah","Newsum",1);
+    Employee aysha = new Employee("Aysha","Newsum",2);
+    Employee audrey = new Employee("Audrey","Newsum",3);
+
+    EmployeeLinkedList list = new EmployeeLinkedList();
+
+    System.out.println(list.isEmpty());
+
+    list.addToFront(micah);
+    list.addToFront(aysha);
+    list.addToFront(audrey);
+
+    list.printList();
+    System.out.println();
+    System.out.println(list.size());
+
+    list.removeFromFront();
+    list.printList();
   }
 }
