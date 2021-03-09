@@ -69,6 +69,7 @@ public class Application {
     Employee micah = new Employee("Micah","Newsum",1);
     Employee aysha = new Employee("Aysha","Newsum",2);
     Employee audrey = new Employee("Audrey","Newsum",3);
+    Employee john = new Employee("John", "Doe", 4);
 
     EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
 
@@ -86,6 +87,13 @@ public class Application {
     list.printList();
 
     list.removeFromEnd();
+    list.printList();
+
+    list.addToFront(audrey);
+    list.addBefore(john,aysha);
+    list.printList();
+    System.out.println(list.size());
+    list.addBefore(null,john);
     list.printList();
   }
 }
