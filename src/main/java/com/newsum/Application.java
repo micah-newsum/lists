@@ -1,6 +1,7 @@
 package com.newsum;
 
 import com.newsum.model.Employee;
+import com.newsum.model.EmployeeDoublyLinkedList;
 import com.newsum.model.EmployeeLinkedList;
 
 import java.util.ArrayList;
@@ -10,9 +11,10 @@ public class Application {
   public static void main(String[] args) {
     arrayListClient();
     employeeLinkedListClient();
+    employeeDoublyLinkedListClient();
   }
 
-  private static void arrayListClient(){
+  public static void arrayListClient(){
     List<Employee> employees = new ArrayList<>();
 
     employees.add(new Employee("Micah","Newsum",1));
@@ -42,7 +44,7 @@ public class Application {
     employees.forEach(System.out::println);
   }
 
-  private static void employeeLinkedListClient(){
+  public static void employeeLinkedListClient(){
     Employee micah = new Employee("Micah","Newsum",1);
     Employee aysha = new Employee("Aysha","Newsum",2);
     Employee audrey = new Employee("Audrey","Newsum",3);
@@ -60,6 +62,38 @@ public class Application {
     System.out.println(list.size());
 
     list.removeFromFront();
+    list.printList();
+  }
+
+  public static void employeeDoublyLinkedListClient(){
+    Employee micah = new Employee("Micah","Newsum",1);
+    Employee aysha = new Employee("Aysha","Newsum",2);
+    Employee audrey = new Employee("Audrey","Newsum",3);
+    Employee john = new Employee("John", "Doe", 4);
+
+    EmployeeDoublyLinkedList list = new EmployeeDoublyLinkedList();
+
+    list.addToFront(micah);
+    list.addToFront(aysha);
+    list.addToFront(audrey);
+    list.printList();
+    System.out.println(list.size());
+
+    Employee billEnd = new Employee("Bill","End",78);
+    list.addToEnd(billEnd);
+    list.printList();
+
+    list.removeFromFront();
+    list.printList();
+
+    list.removeFromEnd();
+    list.printList();
+
+    list.addToFront(audrey);
+    list.addBefore(john,aysha);
+    list.printList();
+    System.out.println(list.size());
+    list.addBefore(null,john);
     list.printList();
   }
 }
