@@ -3,6 +3,7 @@ package com.newsum;
 import com.newsum.model.Employee;
 import com.newsum.model.EmployeeDoublyLinkedList;
 import com.newsum.model.EmployeeLinkedList;
+import com.newsum.model.SortedIntegerLinkedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Application {
     arrayListClient();
     employeeLinkedListClient();
     employeeDoublyLinkedListClient();
+    sortedIntegerLinkedListClient();
   }
 
   public static void arrayListClient(){
@@ -93,7 +95,24 @@ public class Application {
     list.addBefore(john,aysha);
     list.printList();
     System.out.println(list.size());
-    list.addBefore(null,john);
+    // list.addBefore(null,john);
+    list.printList();
+  }
+
+  public static void sortedIntegerLinkedListClient(){
+    SortedIntegerLinkedList list = new SortedIntegerLinkedList();
+
+    Integer one = 1;
+    Integer two = 2;
+    Integer three = 3;
+    Integer four = 4;
+    Integer five = 5;
+
+    list.add(two);
+    list.add(five);
+    list.add(three);
+    list.add(one);
+    list.add(four);
     list.printList();
   }
 }
