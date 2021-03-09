@@ -49,5 +49,6 @@ public class EmployeeLinkedList {
       current = current.getNext();
     }
     System.out.print("null");
+    System.out.println();
   }
 }
