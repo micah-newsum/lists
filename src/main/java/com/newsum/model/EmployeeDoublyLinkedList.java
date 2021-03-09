@@ -1,5 +1,7 @@
 package com.newsum.model;
 
+import java.util.NoSuchElementException;
+
 public class EmployeeDoublyLinkedList {
   private EmployeeNode head;
   private EmployeeNode tail;
@@ -39,6 +41,52 @@ public class EmployeeDoublyLinkedList {
 
     tail = node;
     size++;
+  }
+
+  public boolean addBefore(Employee employeeToAdd, Employee employee){
+    // throw illegal argument exception if employee is null
+    if (employeeToAdd == null){
+      throw new IllegalArgumentException("Employee is null");
+    }
+
+    // create reference of node for employee. If none exists, throw no element found exception.
+    EmployeeNode beforeNode = nodeOf(employee);
+
+    if (beforeNode == null){
+      return false;
+    }
+
+    // Create new node for employeeToAdd
+    EmployeeNode newNode = new EmployeeNode(employeeToAdd);
+
+    // check to see if employee is at head of list. if so, set employeeToAdd to head
+    if (beforeNode == head){
+      head = newNode;
+    } else{
+      EmployeeNode previousNode = beforeNode.getPrevious();
+      previousNode.setNext(newNode);
+      newNode.setPrevious(previousNode);
+      beforeNode.setPrevious(newNode);
+    }
+
+    newNode.setNext(beforeNode);
+    size++;
+    return true;
+  }
+
+  private EmployeeNode nodeOf(Employee employeeToFind){
+    EmployeeNode node = head;
+
+    while (node != null){
+      Employee employee = node.getEmployee();
+      if (employee.equals(employeeToFind)){
+        return node;
+      } else {
+        node = node.getNext();
+      }
+    }
+
+    return node;
   }
 
   public EmployeeNode removeFromFront(){
